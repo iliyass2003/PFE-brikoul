@@ -14,10 +14,10 @@ const Header = () => {
         <Link to={"/create"} style={{ textDecoration: "none" }}>
           <li>Publier un projet</li>
         </Link>
-        <Link to={"/auth"} style={{ textDecoration: "none" }}>
+        <Link to={"/signup"} style={{ textDecoration: "none" }}>
           <li>S'inscrire</li>
         </Link>
-        <Link to={"/auth"} style={{ textDecoration: "none" }}>
+        <Link to={"/login"} style={{ textDecoration: "none" }}>
           <li>Connexion</li>
         </Link>
       </ul>

@@ -7,7 +7,9 @@ import AddEditProject from './pages/AddEditProject';
 import NotFound from './pages/NotFound';
 import Detail from './pages/Detail';
 import Header from './components/Header';
-import Auth from './pages/Auth';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
         <Route path='/create' element={<AddEditProject/>}/>
         <Route path='/update' element={<AddEditProject/>}/>
         <Route path='/*' element={<NotFound/>}/>
-        <Route path='/auth' element={<Auth/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Signup/>}/>
       </Routes>
     </div>
   );
