@@ -9,13 +9,25 @@ import Detail from './pages/Detail';
 import Header from './components/Header';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import { useEffect, useState } from 'react';
+import {auth} from "./firebase"
 
 
 function App() {
+  const [user, setUser] = useState()
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if(authUser){
+        setUser(authUser)
+      }else{
+        setUser(null)
+      }
+    })
+  },[])
   return (
     <div className="App">
-      <Header/>
-      <ToastContainer/>
+      <Header user={user}   />
+      <ToastContainer position='top-center'/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>

@@ -2,7 +2,8 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({user}) => {
+  const userId = user?.uid;
   return (
     <nav>
       <Link to={"/"} style={{ textDecoration: "none" }}>
