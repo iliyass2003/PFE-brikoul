@@ -23,15 +23,21 @@ const initialState = {
 
 const categoryOptions = ["Peinture", "Porte", "Piscin"];
 
-const handleChange = (e) => {};
-const handleTags = () => {};
-const onCategoryChange = () => {};
-
-const AddEditProject = () => {
+const AddEditProject = ({user}) => {
   const [form, setForm] = useState(initialState);
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
   const { title, tags, description, category } = form;
+  const navigate = useNavigate()
+  const handleChange = (e) => {
+    setForm({...form, [e.target.name]: e.target.value})
+  };
+  const handleTags = (tags) => {
+    setForm({...form, tags})
+  };
+  const onCategoryChange = (e) => {
+    setForm({...form, category: e.target.value})
+  };
   useEffect(() => {
     const uploadFile = () => {
       const storageRef = ref(storage, file.name);
@@ -48,7 +54,7 @@ const AddEditProject = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-            toast.info("Image upload to firebase successfully");
+            // toast.info("Image upload to firebase successfully");
             setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
           });
         }
@@ -56,6 +62,23 @@ const AddEditProject = () => {
     };
     file && uploadFile();
   }, [file]);
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if(title && description && category && tags){
+      try{
+        await addDoc(collection(db, "projects"), {
+          ...form,
+          timestamp: serverTimestamp(),
+          author: user.displayName,
+          userId: user.uid
+        })
+        toast.success("Blog created successfully");
+      }catch(err){
+        console.log(err)
+      }
+    }
+    navigate("/")
+  }
   return (
     <form action="">
       <h2>Publier un projet</h2>
@@ -82,7 +105,7 @@ const AddEditProject = () => {
         onChange={handleChange}
       />
       <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-      <button type="submit">Publier</button>
+      <button type="submit" disabled={progress !== null && progress < 100} onSubmit={handleSubmit}>Publier</button>
     </form>
   );
 };
