@@ -1,0 +1,65 @@
+.login{
+  width: 35vw;
+  margin: 50px auto;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 0px 18px 0px rgb(36, 34, 34);
+}
+
+.login form .connexion{
+  color: rgb(0, 110, 255);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.login form input {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1rem;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  outline: none;
+  font-weight: 550;
+}
+
+.login form input:focus{
+  border: 3px solid rgb(0, 110, 255);
+}
+
+.login button{
+  width: 90%;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 40px;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(0, 110, 255);
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login button:hover{
+  background-color: rgb(0, 88, 204);
+}
+
+.login form div span{
+  color: rgb(0, 110, 255);
+  font-weight: bold;
+}
+
+.login form div span a{
+  text-decoration: none;
+  color: rgb(0, 110, 255);
+}
