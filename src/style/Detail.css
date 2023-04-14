@@ -1,0 +1,45 @@
+.project-detail{
+  width: 50vw;
+  margin: 20px auto;
+}
+
+.project-detail img{
+  width: 50vw;
+  border-radius: 10px;
+}
+
+.project-detail .infos{
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-detail .title{
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(33, 0, 182);
+  margin: 20px 0;
+  text-align: left;
+}
+
+.project-detail .category{
+  background-color: rgb(0, 110, 255);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+}
+
+.project-detail .author{
+  font-weight: bold;
+}
+
+.project-detail .infos{
+  margin: 10px 0;
+}
+
+.project-detail .description{
+  text-align: left;
+  font-size: 1.2rem;
+  padding: 15px;
+}
