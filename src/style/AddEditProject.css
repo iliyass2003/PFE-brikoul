@@ -1,0 +1,81 @@
+.addeditproject form{
+  width: 30vw;
+  margin: 20px auto;
+}
+
+.addeditproject .form-title{
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.addeditproject form .title {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 1rem;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid gray;
+  outline: none;
+  font-weight: 550;
+}
+
+.addeditproject .react-tag-input{
+  width: 422px;
+  border: 1px solid gray;
+  margin-bottom: 15px;
+}
+
+.addeditproject .react-tag-input__input{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.react-tag-input__tag__content{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.addeditproject select{
+  width: 422px;
+  padding: 10px;
+  font-size: 1rem;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+textarea{
+  resize: none;
+  width: 400px;
+  padding: 10px;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+input[type="file"]{
+  width: 422px;
+  margin-bottom: 15px;
+  border: 1px solid gray;
+  font-size: 1rem;
+  outline: none;
+}
+
+input::-webkit-file-upload-button{
+  background-color: rgb(0, 110, 255);
+  color: white;
+  padding: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button{
+  background-color: rgb(0, 110, 255);
+  color: white;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}

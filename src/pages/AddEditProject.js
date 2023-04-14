@@ -4,6 +4,7 @@ import "@pathofdev/react-tag-input/build/index.css";
 import { db, storage } from "../firebase";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import "../style/AddEditProject.css"
 import {
   addDoc,
   collection,
@@ -59,7 +60,6 @@ const AddEditBlog = ({ user }) => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-            toast.info("Image upload to firebase successfully");
             setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
           });
         }
@@ -128,12 +128,13 @@ const AddEditBlog = ({ user }) => {
   };
 
   return (
-          <>
-            <div>
+          <div className="addeditproject">
+            <div className="form-title">
               {id ? "Update Project" : "Create Project"}
             </div>
               <form onSubmit={handleSubmit}>
                   <input
+                    className="title"
                     type="text"
                     placeholder="Title"
                     name="title"
@@ -173,7 +174,7 @@ const AddEditBlog = ({ user }) => {
                     {id ? "Update" : "Submit"}
                   </button>
               </form>
-          </>
+          </div>
   );
 };
 

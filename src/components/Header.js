@@ -18,7 +18,7 @@ const Header = ({ user, handleLogout }) => {
         {userId ? (
           <>
             <li style={{fontWeight: "bold"}}>{user?.displayName}</li>
-            <li onClick={handleLogout}>Logout</li>
+            <li onClick={handleLogout} style={{cursor: "pointer"}}>Logout</li>
           </>
         ) : (
           <>

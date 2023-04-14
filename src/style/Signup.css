@@ -31,10 +31,6 @@
   font-weight: 550;
 }
 
-.signup form input:focus{
-  border: 3px solid rgb(0, 110, 255);
-}
-
 .signup button{
   width: 90%;
   padding: 15px;
