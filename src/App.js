@@ -37,7 +37,7 @@ function App() {
       <Header user={user}  handleLogout={handleLogout} />
       <ToastContainer position='top-center'/>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Home/>} user={user}/>
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/create' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/login"/>}/>
         <Route path='/update/:id' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/login"/>}/>

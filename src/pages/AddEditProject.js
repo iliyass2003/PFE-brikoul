@@ -5,6 +5,10 @@ import { db, storage } from "../firebase";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import "../style/AddEditProject.css"
+
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 import {
   addDoc,
   collection,
@@ -19,7 +23,6 @@ const initialState = {
   title: "",
   tags: [],
   category: "",
-  description: "",
   // comments: [],
   // likes: []
 };
@@ -38,11 +41,13 @@ const AddEditBlog = ({ user }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
 
+  const [text, setText] = useState('')
+
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  const { title, tags, category, description } = form;
+  const { title, tags, category } = form;
 
   useEffect(() => {
     const uploadFile = () => {
@@ -95,11 +100,12 @@ const AddEditBlog = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (category && tags && title && description) {
+    if (category && tags && title && text) {
       if (!id) {
         try {
           await addDoc(collection(db, "projects"), {
             ...form,
+            text,
             timestamp: serverTimestamp(),
             author: user.displayName,
             userId: user.uid,
@@ -112,6 +118,7 @@ const AddEditBlog = ({ user }) => {
         try {
           await updateDoc(doc(db, "projects", id), {
             ...form,
+            text,
             timestamp: serverTimestamp(),
             author: user.displayName,
             userId: user.uid,
@@ -157,12 +164,26 @@ const AddEditBlog = ({ user }) => {
                       </option>
                     ))}
                   </select>
-                  <textarea
+
+                  {/* <textarea
                     placeholder="Description"
                     value={description}
                     name="description"
                     onChange={handleChange}
-                  />
+                  /> */}
+
+                  <div className="editor">
+                    <CKEditor
+                      editor={ClassicEditor}
+                      data={text}
+                      onChange={(event, editor) => {
+                        const data = editor.getData()
+                        setText(data)
+                      }}
+                    />
+                  </div>
+
+
                   <input
                     type="file"
                     onChange={(e) => setFile(e.target.files[0])}

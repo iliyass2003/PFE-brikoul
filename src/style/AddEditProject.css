@@ -79,3 +79,8 @@ button{
   cursor: pointer;
   font-size: 1rem;
 }
+
+.editor{
+  width: 422px;
+  margin-bottom: 15px;
+}

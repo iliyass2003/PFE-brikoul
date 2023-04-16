@@ -23,12 +23,13 @@ const Detail = () => {
       <div className="infos">
         <div className="category">{project?.category}</div>
         <div>
-          <span className="author">{project?.author}</span> -{" "}
+          <span className="author">{project?.author}</span> {" "}
+          <i className="fa-solid fa-clock" style={{fontSize: ".7rem"}}></i>&nbsp;
           {project?.timestamp.toDate().toDateString()}
         </div>
       </div>
       <img src={project?.imgUrl} alt={project?.title} />
-      <div className="description">{project?.description}</div>
+      <div  dangerouslySetInnerHTML={{__html: project?.text}} className="description"></div>
     </div>
   );
 };
