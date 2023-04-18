@@ -15,6 +15,12 @@ const Header = ({ user, handleLogout }) => {
         <Link to={"/create"} style={{ textDecoration: "none" }}>
           <li>Publier un projet</li>
         </Link>
+        <Link to={"/commentcamarche"} style={{ textDecoration: "none" }}>
+          <li>Comment Ça Marche</li>
+        </Link>
+        <Link to={"/contact"} style={{ textDecoration: "none" }}>
+          <li>Contact</li>
+        </Link>
         {userId ? (
           <>
             <li style={{fontWeight: "bold"}}>{user?.displayName}</li>
