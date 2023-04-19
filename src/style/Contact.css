@@ -1,0 +1,170 @@
+.contact{
+  margin-top: 20px;
+  border: 1px solid rgb(207, 207, 207);
+  padding: 20px;
+  box-shadow: 0px 0px 18px 0px rgb(36, 34, 34);
+  transition: 0.4s ease;
+  width: 35vw;
+  margin: 40px auto;
+}
+
+.contact:hover{
+  box-shadow: 0px 0px 5px 0px rgb(36, 34, 34);
+}
+
+.contact form{
+  width: 30vw;
+  margin: 20px auto;
+}
+
+
+.contact .form-title{
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #0074e4;
+  text-align: left;
+}
+
+.contact form .numero {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 400px;
+  margin-bottom: 15px;
+}
+
+.contact form .numero:focus{
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+.contact .react-tag-input{
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 422px;
+  margin-bottom: 15px;
+}
+
+.contact .react-tag-input__input{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.react-tag-input__tag__content{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.contact select{
+  appearance: none;
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 422px;
+  margin-bottom: 15px;
+}
+
+select:focus {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+option {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+select:hover option:not(:hover) {
+  background-color: #fff;
+  color: #333;
+}
+
+/* textarea{
+  resize: none;
+  width: 400px;
+  padding: 10px;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 15px;
+} */
+
+input[type="file"]{
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  width: 422px;
+  margin-bottom: 15px;
+}
+
+input::-webkit-file-upload-button{
+  background-color: rgb(0, 110, 255);
+  color: white;
+  padding: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.contact .ville{
+  margin-bottom: 30px;
+}
+
+button{
+  background-color: rgb(0, 110, 255);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #0074e4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 110, 255, 0.5);
+}
+
+
+.contact form .number {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 400px;
+  margin-bottom: 15px;
+}
+
+.contact form .number:focus{
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+

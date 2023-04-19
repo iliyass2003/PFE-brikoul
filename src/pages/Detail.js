@@ -3,10 +3,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import "../style/Detail.css";
+import Spinner from "../components/Spinner";
+
 
 const Detail = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     id && getProjectDetail();
@@ -16,7 +19,13 @@ const Detail = () => {
     const docRef = doc(db, "projects", id);
     const projectDetail = await getDoc(docRef);
     setProject(projectDetail.data());
+    setLoading(false)
   };
+
+  if(loading){
+    return <Spinner/>
+  }
+
   return (
     <div className="project-detail">
       <div className="title">{project?.title}</div>

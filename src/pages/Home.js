@@ -44,12 +44,11 @@ const Home = ({ user }) => {
     }
   }
   return (
-    <div>
-      <div style={{margin: "20px", fontSize: "1.5rem"}}>Daily Projects</div>
+    <>
       {blogs?.map((blog) => (
         <Projects key={blog.id} user={user} {...blog} handleDelete={handleDelete} />
       ))}
-    </div>
+    </>
   );
 };
 

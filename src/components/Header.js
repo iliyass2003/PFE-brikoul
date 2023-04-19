@@ -23,7 +23,7 @@ const Header = ({ user, handleLogout }) => {
         </Link>
         {userId ? (
           <>
-            <li style={{fontWeight: "bold"}}>{user?.displayName}</li>
+            <li style={{cursor: "pointer"}}>{user?.displayName}</li>
             <li onClick={handleLogout} style={{cursor: "pointer"}}>Logout</li>
           </>
         ) : (

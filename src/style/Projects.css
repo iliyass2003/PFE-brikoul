@@ -1,62 +1,65 @@
 .dailyprojects{
   display: flex;
-  margin: 0 20%;
+  flex-direction: row;
+  padding: 20px 15%;
+  border: 1px solid gray;
 }
 
 .dailyprojects .project{
-  display: flex;
-  margin: 10px 0;
+  width: 200px;
+  box-shadow: 0px 0px 18px 0px rgb(36, 34, 34);
+  transition: 0.4s ease;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 4px;
+  padding: 15px;
 }
 
-.dailyprojects img{
-  width: 300px;
-  height: auto;
-  border-radius: 6px;
+.dailyprojects .project:hover{
+  box-shadow: 0px 0px 5px 0px rgb(36, 34, 34);
 }
 
 .dailyprojects .project-info{
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  margin: 0 10px;
-  padding: 10px 0;
 }
 
-.dailyprojects .category{
-  background-color: rgb(0, 110, 255);
-  color: white;
-  width: fit-content;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.dailyprojects .title{
-  font-weight: bold;
-  margin: 10px 0;
+.dailyprojects .project-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .dailyprojects .author{
+  border-bottom: 1px solid gray;
+  text-align: left;
+  color: gray;
   font-weight: bold;
-}
-
-.dailyprojects button{
-  padding: 5px;
+  padding-bottom: 20px;
 }
 
 .dailyprojects .description{
-  font-weight: 300;
   text-align: left;
-  margin: 10px 0;
+  margin-bottom: 20px;
 }
 
-.dailyprojects .buttons{
+.dailyprojects button{
+  width: 70%;
+  color: black;
+  background-color: white;
+  border: 1px solid gray;
+}
+
+.dailyprojects button:hover{
+  color: white;
+  border: 1px solid rgb(0, 110, 255);
+}
+
+.dailyprojects .time{
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
 }
 
-.dailyprojects .fa-trash{
-  margin-left: 15px;
+.dailyprojects .category{
+  font-weight: bold;
 }
