@@ -5,6 +5,7 @@ import Projects from "../components/Projects";
 import Spinner from "../components/Spinner";
 import { async } from "@firebase/util";
 import { toast } from "react-toastify";
+import "../style/Projects.css"
 
 const Home = ({ user }) => {
   const [loading, setLoading] = useState(true);
@@ -28,9 +29,11 @@ const Home = ({ user }) => {
       unsub();
     };
   }, []);
+
   if(loading){
     return <Spinner/>
   }
+
   const handleDelete = async (id) => {
     if(window.confirm("Are you sure you want to delete the project ?")){
       try{
@@ -43,12 +46,13 @@ const Home = ({ user }) => {
       }
     }
   }
+
   return (
-    <>
+    <div className="dailyprojects">
       {blogs?.map((blog) => (
         <Projects key={blog.id} user={user} {...blog} handleDelete={handleDelete} />
       ))}
-    </>
+    </div>
   );
 };
 

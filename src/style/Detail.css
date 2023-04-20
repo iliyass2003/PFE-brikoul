@@ -43,3 +43,22 @@
   font-size: 1.2rem;
   padding: 15px;
 }
+
+
+.detail{
+  display: flex;
+}
+
+.socialmedia{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 150px;
+  top: 35%;
+}
+
+.socialmedia i{
+  margin-bottom: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}

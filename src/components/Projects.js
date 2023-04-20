@@ -24,8 +24,7 @@ const Projects = ({
     return el.textContent || el.innerText || "";
   }
   return (
-      <div className="dailyprojects" key={id}>
-        <div className="project" >
+        <div className="project" key={id}>
           <div className="project-info">
             <div className="project-header">
               <div className="category">{category}</div>
@@ -67,7 +66,6 @@ const Projects = ({
             </Link>
           </div>
         </div>
-      </div>
   );
 };
 
