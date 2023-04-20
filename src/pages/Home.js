@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, getDoc } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Projects from "../components/Projects";
@@ -6,10 +6,16 @@ import Spinner from "../components/Spinner";
 import { async } from "@firebase/util";
 import { toast } from "react-toastify";
 import "../style/Projects.css"
+import { useParams } from "react-router-dom";
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 
 const Home = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
+  const [search, setSearch] = useState("")
+
   useEffect(() => {
     const unsub = onSnapshot(
       collection(db, "projects"),
@@ -30,9 +36,24 @@ const Home = ({ user }) => {
     };
   }, []);
 
+  const filteredBlogPosts = blogs.filter((blog) =>
+    blog.title.toLowerCase().includes(search.toLowerCase()) ||
+    // blog.tags.includes(search.toLowerCase())
+    blog.tags.map(tag => tag.toLowerCase()).includes(search.toLocaleLowerCase())
+  );
+
+
+  function stripHTML(myString) {
+    let el = document.createElement("div");
+    el.innerHTML = myString;
+    return el.textContent || el.innerText || "";
+  }
+
+
   if(loading){
     return <Spinner/>
   }
+  
 
   const handleDelete = async (id) => {
     if(window.confirm("Are you sure you want to delete the project ?")){
@@ -47,11 +68,21 @@ const Home = ({ user }) => {
     }
   }
 
+  const handleChange = (e) => {
+    setSearch(e.target.value)
+  }
+
+
   return (
-    <div className="dailyprojects">
-      {blogs?.map((blog) => (
-        <Projects key={blog.id} user={user} {...blog} handleDelete={handleDelete} />
-      ))}
+    <div className="home">
+      <form >
+        <input type="text" onChange={handleChange}/>
+      </form>
+      <div className="dailyprojects">
+        {filteredBlogPosts?.map((blog) => (
+          <Projects key={blog.id} user={user} {...blog} handleDelete={handleDelete} />
+        ))}
+      </div>
     </div>
   );
 };

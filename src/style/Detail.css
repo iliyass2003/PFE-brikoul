@@ -57,8 +57,10 @@
   top: 35%;
 }
 
-.socialmedia i{
-  margin-bottom: 30px;
-  font-size: 30px;
-  cursor: pointer;
+.react-share__ShareButton{
+  margin-bottom: 20px;
+}
+
+.react-share__ShareButton:hover{
+  transform: scale(1.2);
 }

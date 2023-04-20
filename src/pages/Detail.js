@@ -4,6 +4,17 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import "../style/Detail.css";
 import Spinner from "../components/Spinner";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  LinkedinShareButton,
+  LineIcon,
+  LinkedinIcon,
+} from "react-share";
 
 const Detail = () => {
   const { id } = useParams();
@@ -24,6 +35,8 @@ const Detail = () => {
   if (loading) {
     return <Spinner />;
   }
+
+  const url = window.location.href
 
   return (
     <div className="detail">
@@ -48,10 +61,18 @@ const Detail = () => {
         ></div>
       </div>
       <div className="socialmedia">
-      <i class="fa-brands fa-facebook fa-fade" style={{color: "rgb(0, 110, 255)"}}></i>
-        <i class="fa-brands fa-twitter fa-fade" style={{color: "rgb(0, 110, 255)"}}></i>
-        <i class="fa-brands fa-square-instagram fa-fade" style={{color: "#E1306C"}}></i>
-        <i class="fa-brands fa-square-whatsapp fa-fade" style={{color: "#25D366"}}></i>
+        <FacebookShareButton url={url} windowWidth={600} windowHeight={600}>
+          <FacebookIcon size={40} round={true} />
+        </FacebookShareButton>
+        <TwitterShareButton url={url} windowWidth={600} windowHeight={600}>
+          <TwitterIcon size={40} round={true} />
+        </TwitterShareButton>
+        <WhatsappShareButton url={url} windowWidth={600} windowHeight={600}>
+          <WhatsappIcon size={40} round={true} />
+        </WhatsappShareButton>
+        <LinkedinShareButton url={url} windowWidth={600} windowHeight={600}>
+          <LinkedinIcon size={40} round={true} />
+        </LinkedinShareButton>
       </div>
     </div>
   );
