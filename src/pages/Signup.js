@@ -37,11 +37,11 @@ const Signup = () => {
     <div className='signup'>
       <form action="" onSubmit={handleAuth}>
         <div className='inscrire'>S'inscrire</div>
-        <input type="text" placeholder='First Name' name='firstName' value={firstName} onChange={handleChange} />
-        <input type="text" placeholder='Last Name' name='lastName' value={lastName} onChange={handleChange} />
+        <input type="text" placeholder='Prénom' name='firstName' value={firstName} onChange={handleChange} />
+        <input type="text" placeholder='Nom' name='lastName' value={lastName} onChange={handleChange} />
         <input type="email" placeholder='Email' name='email' value={email} onChange={handleChange}/>
-        <input type="password" placeholder='Password' name='password' value={password} onChange={handleChange}/>
-        <input type="password" placeholder='Confirm Password' name='confirmPassword' value={confirmPassword} onChange={handleChange}/>
+        <input type="password" placeholder='Le mot de passe' name='password' value={password} onChange={handleChange}/>
+        <input type="password" placeholder='Confirmez le mot de passe' name='confirmPassword' value={confirmPassword} onChange={handleChange}/>
         <button type='submit'>S'inscrire</button>
         <div>Vous avez déjà un compte ? <span><a href="/login">Connexion</a></span></div>
       </form>

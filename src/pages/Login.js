@@ -31,7 +31,7 @@ const Login = () => {
       <form action="" onSubmit={handleAuth}>
         <div className='connexion'>Connexion</div>
         <input type="email" placeholder='Email' name='email' value={email} onChange={handleChange}/>
-        <input type="password" placeholder='Password' name='password' value={password} onChange={handleChange}/>
+        <input type="password" placeholder='Le mot de passe' name='password' value={password} onChange={handleChange}/>
         <button type='submit'>Connexion</button>
         <div>N'avez pas de compte ? <span><a href="/signup">S'inscrire</a></span></div>
       </form>

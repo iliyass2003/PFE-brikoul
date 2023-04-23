@@ -100,7 +100,7 @@ const AddEditBlog = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (category && tags && title && text) {
+    if (category && tags && title && text && file) {
       if (!id) {
         try {
           await addDoc(collection(db, "projects"), {
@@ -110,7 +110,7 @@ const AddEditBlog = ({ user }) => {
             author: user.displayName,
             userId: user.uid,
           });
-          toast.success("Project created successfully");
+          toast.success("Projet créé avec succès");
         } catch (err) {
           console.log(err);
         }
@@ -123,13 +123,13 @@ const AddEditBlog = ({ user }) => {
             author: user.displayName,
             userId: user.uid,
           });
-          toast.success("Project updated successfully");
+          toast.success("Projet mis à jour avec succès");
         } catch (err) {
           console.log(err);
         }
       }
     } else {
-      return toast.error("All fields are mandatory to fill");
+      return toast.error("Tous les champs sont obligatoires à remplir");
     }
     navigate("/");
   };
@@ -137,27 +137,27 @@ const AddEditBlog = ({ user }) => {
   return (
           <div className="addeditproject">
             <div className="form-title">
-              {id ? "Update Project" : "Create Project"}
+              {id ? "Modifier un projet" : "Créer un projet"}
             </div>
               <form onSubmit={handleSubmit}>
                   <input
                     className="title"
                     type="text"
-                    placeholder="Title"
+                    placeholder="Titre"
                     name="title"
                     value={title}
                     onChange={handleChange}
                   />
                   <ReactTagInput
                     tags={tags}
-                    placeholder="Tags"
+                    placeholder="Mots clés"
                     onChange={handleTags}
                   />
                   <select
                     value={category}
                     onChange={onCategoryChange}
                   >
-                    <option>Please select category</option>
+                    <option value={""}>Veuillez sélectionner une catégorie</option>
                     {categoryOption.map((option, index) => (
                       <option value={option || ""} key={index}>
                         {option}
@@ -192,7 +192,7 @@ const AddEditBlog = ({ user }) => {
                     type="submit"
                     disabled={progress !== null && progress < 100}
                   >
-                    {id ? "Update" : "Submit"}
+                    {id ? "Modifier" : "Publier"}
                   </button>
               </form>
           </div>
