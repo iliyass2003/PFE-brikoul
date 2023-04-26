@@ -65,6 +65,7 @@ const AddEditBlog = ({ user }) => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+            toast.success("Image téléchargée avec succès")
             setForm((prev) => ({ ...prev, imgUrl: downloadUrl }));
           });
         }

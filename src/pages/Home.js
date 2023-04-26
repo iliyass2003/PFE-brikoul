@@ -1,20 +1,26 @@
-import { collection, deleteDoc, doc, onSnapshot, getDoc } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  getDoc,
+} from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Projects from "../components/Projects";
 import Spinner from "../components/Spinner";
 import { async } from "@firebase/util";
 import { toast } from "react-toastify";
-import "../style/Projects.css"
+import "../style/Projects.css";
 import { useParams } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/firestore";
-
+import "../style/Home.css";
 
 const Home = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -25,7 +31,7 @@ const Home = ({ user }) => {
           list.push({ id: doc.id, ...doc.data() });
         });
         setBlogs(list);
-        setLoading(false)
+        setLoading(false);
       },
       (error) => {
         console.log(error);
@@ -36,12 +42,14 @@ const Home = ({ user }) => {
     };
   }, []);
 
-  const filteredBlogPosts = blogs.filter((blog) =>
-    blog.title.toLowerCase().includes(search.toLowerCase()) ||
-    // blog.tags.includes(search.toLowerCase())
-    blog.tags.map(tag => tag.toLowerCase()).includes(search.toLocaleLowerCase())
+  const filteredBlogPosts = blogs.filter(
+    (blog) =>
+      blog.title.toLowerCase().includes(search.toLowerCase()) ||
+      // blog.tags.includes(search.toLowerCase())
+      blog.tags
+        .map((tag) => tag.toLowerCase())
+        .includes(search.toLocaleLowerCase())
   );
-
 
   function stripHTML(myString) {
     let el = document.createElement("div");
@@ -49,38 +57,43 @@ const Home = ({ user }) => {
     return el.textContent || el.innerText || "";
   }
 
-
-  if(loading){
-    return <Spinner/>
+  if (loading) {
+    return <Spinner />;
   }
-  
 
   const handleDelete = async (id) => {
-    if(window.confirm("Are you sure you want to delete the project ?")){
-      try{
-        setLoading(true)
-        await deleteDoc(doc(db, "projects", id))
+    if (window.confirm("Are you sure you want to delete the project ?")) {
+      try {
+        setLoading(true);
+        await deleteDoc(doc(db, "projects", id));
         toast.success("Blog deleted successfully");
-        setLoading(false)
-      }catch(err){
-        console.log(err)
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
       }
     }
-  }
+  };
 
   const handleChange = (e) => {
-    setSearch(e.target.value)
-  }
-
+    setSearch(e.target.value);
+  };
 
   return (
     <div className="home">
-      <form >
-        <input type="text" onChange={handleChange}/>
-      </form>
+      <input
+        type="text"
+        placeholder="Chercher..."
+        onChange={handleChange}
+        className="search"
+      />
       <div className="dailyprojects">
         {filteredBlogPosts?.map((blog) => (
-          <Projects key={blog.id} user={user} {...blog} handleDelete={handleDelete} />
+          <Projects
+            key={blog.id}
+            user={user}
+            {...blog}
+            handleDelete={handleDelete}
+          />
         ))}
       </div>
     </div>
