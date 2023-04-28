@@ -14,6 +14,7 @@ import {auth} from "./firebase"
 import { signOut } from 'firebase/auth';
 import CommentCaMarche from './pages/CommentCaMarche'
 import Contact from './pages/Contact';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -43,12 +44,13 @@ function App() {
         <Route path='/home' element={<Home/>} user={user}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
-        <Route path='/create' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/login"/>}/>
-        <Route path='/update/:id' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/login"/>}/>
+        <Route path='/create' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
+        <Route path='/update/:id' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/commentcamarche' element={<CommentCaMarche/>}/>
+        <Route path='/profile' element={user?.uid ? <Profile user={user}/> : <Navigate to="/"/>}/>
       </Routes>
     </div>
   );

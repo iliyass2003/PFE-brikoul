@@ -23,8 +23,18 @@ const Header = ({ user, handleLogout }) => {
         </Link>
         {userId ? (
           <>
-            <li style={{cursor: "pointer"}}>{user?.displayName}</li>
-            <li onClick={handleLogout} style={{cursor: "pointer"}}>Logout</li>
+            {user?.photoURL ? (
+              <Link to={'/profile'} >
+              <li className="image"><img src={user?.photoURL} alt="" /></li>
+              </Link>
+            ) : (
+              <Link to={'/profile'} style={{textDecoration: "none"}}>
+                <li style={{fontWeight: "bold"}}>{(user?.displayName).toUpperCase()}</li>
+              </Link>
+            )}
+            <li onClick={handleLogout} style={{ cursor: "pointer" }}>
+              Logout
+            </li>
           </>
         ) : (
           <>
