@@ -1,5 +1,88 @@
-.profile img{
-  width: 100px;
-  height: 100px;
+.profile .profile-infos img{
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile{
+  background-color:aliceblue;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.profile-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  background-color: white;
+  width: 30%;
+  position: relative;
+  top: 20px;
+  left: 10%;
+  border: 1px solid rgb(214, 214, 214);
+  padding: 20px;
+}
+
+.profile-infos .change-photo{
+  display: flex;
+  justify-content: space-between;
+  height: 36px;
+  margin-bottom: 20px;
+}
+
+.profile-infos .change-photo input{
+  width: 65%;
+  font-size: 0.8rem;
+  height: 100%;
+}
+
+.profile-infos .change-photo button{
+  width: 30%;
+  font-size: 0.8rem;
+  height: 100%;
+}
+
+.profile-infos .displayname{
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  margin-bottom: 20px;
+}
+
+.profile-infos .info{
+  display: flex;
+  align-items: center;
+}
+
+.profile-infos .info img{
+  width: 20px;
+  height: auto;
+}
+
+.profile-infos i{
+  color: rgb(0, 110, 255);
+  margin-right: 10px;
+}
+
+.displayname img{
+  margin-left: 10px;
+}
+
+.bio{
+  margin-bottom: 20px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.profile-infos .number{
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.profile-infos .email{
+  margin-bottom: 10px;
+  font-size: 1.3rem;
 }

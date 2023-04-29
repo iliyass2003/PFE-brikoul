@@ -29,7 +29,7 @@ const Header = ({ user, handleLogout }) => {
               </Link>
             ) : (
               <Link to={'/profile'} style={{textDecoration: "none"}}>
-                <li style={{fontWeight: "bold"}}>{(user?.displayName).toUpperCase()}</li>
+                <li style={{fontWeight: "bold"}}>{user?.displayName}</li>
               </Link>
             )}
             <li onClick={handleLogout} style={{ cursor: "pointer" }}>

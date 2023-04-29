@@ -15,6 +15,7 @@ import { signOut } from 'firebase/auth';
 import CommentCaMarche from './pages/CommentCaMarche'
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
+import UpdateProfile from './pages/UpdateProfile';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/commentcamarche' element={<CommentCaMarche/>}/>
         <Route path='/profile' element={user?.uid ? <Profile user={user}/> : <Navigate to="/"/>}/>
+        <Route path='/profile/update' element={user?.uid ? <UpdateProfile user={user}/> : <Navigate to="/"/>}/>
       </Routes>
     </div>
   );

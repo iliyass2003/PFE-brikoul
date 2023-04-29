@@ -1,6 +1,6 @@
 .signup{
   width: 35vw;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .signup form {
@@ -76,4 +76,25 @@
 .signup form div span a{
   text-decoration: none;
   color: rgb(0, 110, 255);
+}
+
+
+.signup select{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+  width: 95%;
+  margin: 10px auto;
+}
+
+.signup select:focus {
+  outline: none;
+  border-color: #0066ff;
+  box-shadow: 0 0 5px #0066ff;
+}
+
+.signup select:hover{
+  border-color: #999;
 }
