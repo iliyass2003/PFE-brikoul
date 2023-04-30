@@ -1,0 +1,57 @@
+.updateprofile{
+  background-color:aliceblue;
+  height: fit-content;
+  padding: 20px;
+}
+
+.updateprofile form{
+  width: 40vw;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.updateprofile input[name='phonenumber']{
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 500px;
+  margin-bottom: 15px;
+}
+
+.updateprofile input[name='phonenumber']:focus{
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+.updateprofile .react-tag-input{
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 522px;
+  margin-bottom: 15px;
+}
+
+.updateprofile .react-tag-input__input{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.react-tag-input__tag__content{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.updateprofile textarea{
+  width: 500px;
+  height: ;
+}

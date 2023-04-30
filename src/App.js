@@ -12,7 +12,6 @@ import Signup from './pages/Signup';
 import { useEffect, useState } from 'react';
 import {auth} from "./firebase"
 import { signOut } from 'firebase/auth';
-import CommentCaMarche from './pages/CommentCaMarche'
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import UpdateProfile from './pages/UpdateProfile';
@@ -50,7 +49,6 @@ function App() {
         <Route path='/*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/commentcamarche' element={<CommentCaMarche/>}/>
         <Route path='/profile' element={user?.uid ? <Profile user={user}/> : <Navigate to="/"/>}/>
         <Route path='/profile/update' element={user?.uid ? <UpdateProfile user={user}/> : <Navigate to="/"/>}/>
       </Routes>

@@ -50,6 +50,7 @@ const Profile = ({ user }) => {
     updateProfile(user, { photoURL });
     setLoading(false);
     toast.success("Changement d'image réussi");
+    window.location.reload();
   }
   return (
     <div className="profile">
@@ -65,20 +66,53 @@ const Profile = ({ user }) => {
           {user.displayName}
           <img src={require("../images/morocco.png")} />
         </div>
-      <div>
+        <div>
           <div className="email info">
             <i class="fa-solid fa-envelope"></i>
             {user.email}
           </div>
           <div className="number info">
             <i class="fa-solid fa-phone"></i>
-            {infos?.phonenumber}
+            {infos?.phonenumber ? (
+              infos?.phonenumber
+            ) : (
+              <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>
+                Modifier votre numéro de téléphone
+              </p>
+            )}
           </div>
-      </div>
-        <div className="bio info">{infos?.bio}</div>
+        </div>
         <Link to={"/profile/update"}>
           <button>Modifier le profil</button>
         </Link>
+      </div>
+      <div className="right">
+        <div className="bio">
+        <span className="bioheader">Bio</span>
+          {infos?.bio ? (
+            infos?.bio
+          ) : (
+            <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>
+              Modifier votre description
+            </p>
+          )}
+        </div>
+        {infos?.type === "professionnel" ? (
+          <div className="skills">
+          <div className="skillsheader">Skills</div>
+          {infos?.tags.length > 0 ? (
+            <>
+              {(infos?.tags).map((tag) => (
+                <span>{tag}</span>
+              ))}
+            </>
+          ) : (
+            <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>Ajouter de nouvelles compétences à votre profil</p>
+          )}
+        </div>
+        ) : (
+          null
+        )}
       </div>
     </div>
   );

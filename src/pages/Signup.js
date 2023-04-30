@@ -17,11 +17,12 @@ const initialState = {
   password: "",
   confirmPassword: "",
   type: "",
+  tags: []
 };
 
 const Signup = () => {
   const [state, setState] = useState(initialState);
-  const { firstName, lastName, email, password, confirmPassword, type } = state;
+  const { firstName, lastName, email, password, confirmPassword, type, tags } = state;
   const navigate = useNavigate();
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -40,6 +41,7 @@ const Signup = () => {
 
       await setDoc(doc(db, "users", user.uid), {
         type: type,
+        tags: tags
       });
 
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
