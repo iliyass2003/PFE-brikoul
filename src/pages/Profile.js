@@ -5,13 +5,14 @@ import {
   getDownloadURL,
   ref,
   uploadBytes,
-  uploadBytesResumable,
 } from "firebase/storage";
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { db } from "../firebase";
-import { doc, collection, getDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, collection, deleteDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import Projects from '../components/Projects'
+
 
 const Profile = ({ user }) => {
   const [photoURL, setPhotoURL] = useState(
@@ -20,6 +21,39 @@ const Profile = ({ user }) => {
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [infos, setInfos] = useState(null);
+  //////
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, "projects"),
+      (snapchot) => {
+        let list = [];
+        snapchot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
+        });
+        setBlogs(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Voulez-vous vraiment supprimer le projet ?")) {
+      try {
+        await deleteDoc(doc(db, "projects", id));
+        toast.success("Projet supprimé avec succès");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+  /////
+
   useEffect(() => {
     user.uid && getUserInfos();
   }, [user.uid]);
@@ -52,6 +86,12 @@ const Profile = ({ user }) => {
     toast.success("Changement d'image réussi");
     window.location.reload();
   }
+
+  const filteredBlogPosts = blogs.filter(
+    (blog) =>
+      blog.userId === user?.uid
+  );
+
   return (
     <div className="profile">
       <div className="profile-infos">
@@ -113,6 +153,18 @@ const Profile = ({ user }) => {
         ) : (
           null
         )}
+        {infos?.type === "client" ? (
+          <div className="dailyprojects">
+          {filteredBlogPosts?.map((blog) => (
+            <Projects
+              key={blog.id}
+              user={user}
+              {...blog}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </div>
+        ) : null}
       </div>
     </div>
   );

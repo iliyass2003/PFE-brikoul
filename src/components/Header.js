@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../style/Header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({ user, handleLogout }) => {
+const Header = ({ user, handleLogout, infos }) => {
   const userId = user?.uid;
   return (
     <nav>
@@ -12,21 +12,28 @@ const Header = ({ user, handleLogout }) => {
         </h1>
       </Link>
       <ul>
-        <Link to={"/create"} style={{ textDecoration: "none" }}>
-          <li>Publier un projet</li>
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          <li>Acceuil</li>
         </Link>
+        {infos?.type === "client" ? (
+          <Link to={"/create"} style={{ textDecoration: "none" }}>
+            <li>Publier un projet</li>
+          </Link>
+        ) : null}
         <Link to={"/contact"} style={{ textDecoration: "none" }}>
           <li>Contact</li>
         </Link>
         {userId ? (
           <>
             {user?.photoURL ? (
-              <Link to={'/profile'} >
-              <li className="image"><img src={user?.photoURL} alt="" /></li>
+              <Link to={"/profile"}>
+                <li className="image">
+                  <img src={user?.photoURL} alt="" />
+                </li>
               </Link>
             ) : (
-              <Link to={'/profile'} style={{textDecoration: "none"}}>
-                <li style={{fontWeight: "bold"}}>{user?.displayName}</li>
+              <Link to={"/profile"} style={{ textDecoration: "none" }}>
+                <li style={{ fontWeight: "bold" }}>{user?.displayName}</li>
               </Link>
             )}
             <li onClick={handleLogout} style={{ cursor: "pointer" }}>

@@ -15,6 +15,8 @@ import { signOut } from 'firebase/auth';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 import UpdateProfile from './pages/UpdateProfile';
+import { db } from "./firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 
 function App() {
@@ -35,16 +37,25 @@ function App() {
       navigate("/login")
     })
   }
+  const [infos, setInfos] = useState(null);
+  useEffect(() => {
+    user?.uid && getUserInfos();
+  }, [user?.uid]);
+  const getUserInfos = async () => {
+    const docRef = doc(db, "users", user?.uid);
+    const userInfos = await getDoc(docRef);
+    setInfos(userInfos.data());
+  };
   return (
     <div className="App">
-      <Header user={user}  handleLogout={handleLogout} />
+      <Header user={user} infos={infos}  handleLogout={handleLogout} />
       <ToastContainer position='top-center'/>
       <Routes>
         <Route path='/' element={<Home/>} user={user}/>
         <Route path='/home' element={<Home/>} user={user}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
-        <Route path='/create' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
+        <Route path='/create' element={user?.uid && infos?.type === "client" ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/update/:id' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>

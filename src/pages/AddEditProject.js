@@ -51,6 +51,7 @@ const AddEditBlog = ({ user }) => {
 
   useEffect(() => {
     const uploadFile = () => {
+      toast.error("Attendre le téléchargement de l'image")
       const storageRef = ref(storage, file.name);
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
@@ -80,10 +81,11 @@ const AddEditBlog = ({ user }) => {
   }, [id]);
 
   const getBlogDetail = async () => {
-    const docRef = doc(db, "blogs", id);
+    const docRef = doc(db, "projects", id);
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       setForm({ ...snapshot.data() });
+      setText(snapshot.data().text)
     }
   };
 
@@ -166,12 +168,6 @@ const AddEditBlog = ({ user }) => {
                     ))}
                   </select>
 
-                  {/* <textarea
-                    placeholder="Description"
-                    value={description}
-                    name="description"
-                    onChange={handleChange}
-                  /> */}
 
                   <div className="editor">
                     <CKEditor
