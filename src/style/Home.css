@@ -1,4 +1,4 @@
-.home  input {
+.home input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -20,4 +20,82 @@
 
 .home input:hover {
   border-color: #999;
+}
+
+.commentcamarche {
+  background-color: rgb(228, 242, 255);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.commentcamarche h1 {
+  text-align: left;
+  padding: 0 10%;
+}
+
+.commentcamarche .etapes {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+
+.commentcamarche .etape {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 30%;
+}
+
+
+.commentcamarche .etape .etapeheader {
+  display: flex;
+  align-items: center;
+}
+
+.commentcamarche .etape .etapeheader p {
+  font-weight: bold;
+}
+
+.commentcamarche .etape img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.commentcamarche .etape .etapedescription {
+  text-align: left;
+}
+
+/*  */
+
+.start {
+  display: flex;
+  padding: 0 10%;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 60px 0;
+}
+
+.start .infos {
+  text-align: left;
+  margin-right: 40px;
+}
+
+.start .firstp {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 50px;
+  margin-bottom: 5px;
+}
+
+.start .firstp span {
+  color: rgb(0, 110, 255);
+}
+
+.start .secondp {
+  color: gray;
+}
+
+.start img{
+  width: 500px;
 }

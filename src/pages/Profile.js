@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "../style/Profile.css";
 import { storage } from "../firebase";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { db } from "../firebase";
-import { doc, getDoc, onSnapshot, collection, deleteDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  onSnapshot,
+  collection,
+  deleteDoc,
+} from "firebase/firestore";
 import { Link } from "react-router-dom";
-import Projects from '../components/Projects'
-
 
 const Profile = ({ user }) => {
   const [photoURL, setPhotoURL] = useState(
@@ -21,38 +21,6 @@ const Profile = ({ user }) => {
   const [photo, setPhoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const [infos, setInfos] = useState(null);
-  //////
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    const unsub = onSnapshot(
-      collection(db, "projects"),
-      (snapchot) => {
-        let list = [];
-        snapchot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
-        });
-        setBlogs(list);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    return () => {
-      unsub();
-    };
-  }, []);
-
-  const handleDelete = async (id) => {
-    if (window.confirm("Voulez-vous vraiment supprimer le projet ?")) {
-      try {
-        await deleteDoc(doc(db, "projects", id));
-        toast.success("Projet supprimé avec succès");
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
-  /////
 
   useEffect(() => {
     user.uid && getUserInfos();
@@ -86,11 +54,6 @@ const Profile = ({ user }) => {
     toast.success("Changement d'image réussi");
     window.location.reload();
   }
-
-  const filteredBlogPosts = blogs.filter(
-    (blog) =>
-      blog.userId === user?.uid
-  );
 
   return (
     <div className="profile">
@@ -128,7 +91,7 @@ const Profile = ({ user }) => {
       </div>
       <div className="right">
         <div className="bio">
-        <span className="bioheader">Bio</span>
+          <span className="bioheader">Bio</span>
           {infos?.bio ? (
             infos?.bio
           ) : (
@@ -139,32 +102,30 @@ const Profile = ({ user }) => {
         </div>
         {infos?.type === "professionnel" ? (
           <div className="skills">
-          <div className="skillsheader">Skills</div>
-          {infos?.tags.length > 0 ? (
-            <>
-              {(infos?.tags).map((tag) => (
-                <span>{tag}</span>
-              ))}
-            </>
+            <div className="skillsheader">Skills</div>
+            {infos?.tags.length > 0 ? (
+              <>
+                {(infos?.tags).map((tag) => (
+                  <span>{tag}</span>
+                ))}
+              </>
+            ) : (
+              <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>
+                Ajouter de nouvelles compétences à votre profil
+              </p>
+            )}
+          </div>
+        ) : null}
+        <div className="bio">
+          <span className="bioheader">Catégorie de travail</span>
+          {infos?.category ? (
+            infos?.category
           ) : (
-            <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>Ajouter de nouvelles compétences à votre profil</p>
+            <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>
+              Modifier votre catégorie de travail
+            </p>
           )}
         </div>
-        ) : (
-          null
-        )}
-        {infos?.type === "client" ? (
-          <div className="dailyprojects">
-          {filteredBlogPosts?.map((blog) => (
-            <Projects
-              key={blog.id}
-              user={user}
-              {...blog}
-              handleDelete={handleDelete}
-            />
-          ))}
-        </div>
-        ) : null}
       </div>
     </div>
   );

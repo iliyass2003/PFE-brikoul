@@ -49,18 +49,32 @@
   display: flex;
 }
 
-.socialmedia{
+.detail .socialmedia{
   display: flex;
   flex-direction: column;
   position: fixed;
   right: 150px;
-  top: 35%;
+  top: 20%;
 }
 
 .react-share__ShareButton{
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .react-share__ShareButton:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+.editdelete{
+  display: flex;
+  flex-direction: column;
+}
+
+.editdelete i{
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.editdelete i:hover{
+  transform: scale(1.1);
 }

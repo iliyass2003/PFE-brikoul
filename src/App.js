@@ -17,6 +17,8 @@ import Profile from './pages/Profile';
 import UpdateProfile from './pages/UpdateProfile';
 import { db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import Footer from './components/Footer';
+
 
 
 function App() {
@@ -54,7 +56,7 @@ function App() {
         <Route path='/' element={<Home/>} user={user}/>
         <Route path='/home' element={<Home/>} user={user}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/detail/:id' element={<Detail/>}/>
+        <Route path='/detail/:id' element={<Detail user={user}/>}/>
         <Route path='/create' element={user?.uid && infos?.type === "client" ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/update/:id' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/*' element={<NotFound/>}/>
@@ -63,6 +65,7 @@ function App() {
         <Route path='/profile' element={user?.uid ? <Profile user={user}/> : <Navigate to="/"/>}/>
         <Route path='/profile/update' element={user?.uid ? <UpdateProfile user={user}/> : <Navigate to="/"/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }

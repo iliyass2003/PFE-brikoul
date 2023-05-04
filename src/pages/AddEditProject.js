@@ -22,18 +22,17 @@ import { toast } from "react-toastify";
 const initialState = {
   title: "",
   tags: [],
-  category: "",
-  // comments: [],
-  // likes: []
+  category: ""
 };
 
 const categoryOption = [
-  "Fashion",
-  "Technology",
-  "Food",
-  "Politics",
-  "Sports",
-  "Business",
+  "Plomberie",
+  "Électricité",
+  "Serrurerie",
+  "Chauffage & Climatisation",
+  "Gaz",
+  "Dépannage",
+  "Installation"
 ];
 
 const AddEditBlog = ({ user }) => {

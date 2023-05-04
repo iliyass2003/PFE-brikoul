@@ -40,29 +40,6 @@ const Projects = ({
           className="description"
           dangerouslySetInnerHTML={{ __html: stripHTML(excerpt(text, 100)) }}
         ></div>
-        {userId === user?.uid ? (
-          <div>
-            <Link to={`/update/${id}`}>
-            <i
-              className="fa-solid fa-pen-to-square"
-              style={{
-                color: "#005cfa",
-                cursor: "pointer",
-                fontSize: "1.5rem",
-              }}
-            ></i>
-            </Link>
-            <i
-              className="fa-solid fa-trash"
-              style={{
-                color: "#ff0000",
-                cursor: "pointer",
-                fontSize: "1.5rem",
-              }}
-              onClick={() => handleDelete(id)}
-            ></i>
-          </div>
-        ) : null}
         <Link to={`/detail/${id}`}>
           <button className="read-more">Lire plus</button>
         </Link>

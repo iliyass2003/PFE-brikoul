@@ -55,3 +55,37 @@
   width: 500px;
   height: ;
 }
+
+.updateprofile .title{
+  font-size: 2rem;
+}
+
+.updateprofile select{
+  appearance: none;
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 18px;
+  padding: 10px;
+  width: 522px;
+  margin-bottom: 15px;
+}
+
+
+.updateprofile select:focus {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+
+.updateprofile option {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.updateprofile select:hover option:not(:hover) {
+  background-color: #fff;
+  color: #333;
+}

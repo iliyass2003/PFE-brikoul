@@ -12,11 +12,12 @@ const initialState = {
   phonenumber: "",
   bio: "",
   tags: [],
+  category: ""
 };
 
 const UpdateProfile = ({ user }) => {
   const [form, setForm] = useState(initialState);
-  const { phonenumber, bio, tags } = form;
+  const { phonenumber, bio, tags, category } = form;
   const navigate = useNavigate();
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -80,6 +81,16 @@ const UpdateProfile = ({ user }) => {
           value={form.bio}
           onChange={handleChange}
         ></textarea>
+        <select name="category" value={form.category} onChange={handleChange}>
+          <option value="">Sélectionnez votre catégorie de travail</option>
+          <option value="Plomberie">Plomberie</option>
+          <option value="Électricité">Électricité</option>
+          <option value="Serrurerie">Serrurerie</option>
+          <option value="Chauffage & Climatisation">Chauffage & Climatisation</option>
+          <option value="Gaz">Gaz</option>
+          <option value="Dépannage">Dépannage</option>
+          <option value="Installation">Installation</option>
+        </select>
         <button type="submit">Modifier</button>
       </form>
     </div>

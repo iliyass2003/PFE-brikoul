@@ -11,7 +11,7 @@ nav ul{
   justify-content: space-between;
 }
 
-ul li{
+nav ul li{
   list-style: none;
   margin-left: 40px;
   color: black;
@@ -19,11 +19,11 @@ ul li{
   transition: 0.3s;
 }
 
-li:hover{
+nav li:hover{
   color: rgb(0, 110, 255);
 }
 
-li:not(.image):after{
+nav li:not(.image):after{
   content: '';
   width: 0;
   height: 3px;
@@ -34,7 +34,7 @@ li:not(.image):after{
   transition: 0.4s;
 }
 
-li:hover::after{
+nav li:hover::after{
   width: 100%;
 }
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { useParams } from "react-router-dom";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import "../style/Detail.css";
 import Spinner from "../components/Spinner";
+import { toast } from "react-toastify";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -16,10 +17,23 @@ import {
   LinkedinIcon,
 } from "react-share";
 
-const Detail = () => {
+const Detail = ({user}) => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Voulez-vous vraiment supprimer le projet ?")) {
+      try {
+        await deleteDoc(doc(db, "projects", id));
+        toast.success("Projet supprimé avec succès");
+        navigate('/')
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   useEffect(() => {
     id && getProjectDetail();
@@ -62,17 +76,40 @@ const Detail = () => {
       </div>
       <div className="socialmedia">
         <FacebookShareButton url={url} windowWidth={600} windowHeight={600}>
-          <FacebookIcon size={40} round={true} />
+          <FacebookIcon size={35} round={true} />
         </FacebookShareButton>
         <TwitterShareButton url={url} windowWidth={600} windowHeight={600}>
-          <TwitterIcon size={40} round={true} />
+          <TwitterIcon size={35} round={true} />
         </TwitterShareButton>
         <WhatsappShareButton url={url} windowWidth={600} windowHeight={600}>
-          <WhatsappIcon size={40} round={true} />
+          <WhatsappIcon size={35} round={true} />
         </WhatsappShareButton>
         <LinkedinShareButton url={url} windowWidth={600} windowHeight={600}>
-          <LinkedinIcon size={40} round={true} />
+          <LinkedinIcon size={35} round={true} />
         </LinkedinShareButton>
+        {user?.uid === project?.userId  ? (
+          <div className="editdelete">
+            <Link to={`/update/${id}`}>
+            <i
+              className="fa-solid fa-pen-to-square"
+              style={{
+                color: "#005cfa",
+                cursor: "pointer",
+                fontSize: "1.8rem",
+              }}
+            ></i>
+            </Link>
+            <i
+              className="fa-solid fa-trash"
+              style={{
+                color: "#ff0000",
+                cursor: "pointer",
+                fontSize: "1.8rem",
+              }}
+              onClick={() => handleDelete(id)}
+            ></i>
+          </div>
+        ) : null}
       </div>
     </div>
   );
