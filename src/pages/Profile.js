@@ -116,16 +116,18 @@ const Profile = ({ user }) => {
             )}
           </div>
         ) : null}
-        <div className="bio">
-          <span className="bioheader">Catégorie de travail</span>
-          {infos?.category ? (
-            infos?.category
-          ) : (
-            <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>
-              Modifier votre catégorie de travail
-            </p>
-          )}
-        </div>
+        {infos?.type === "professionnel" ? (
+          <div className="bio">
+            <span className="bioheader">Catégorie de travail</span>
+            {infos?.category ? (
+              infos?.category
+            ) : (
+              <p style={{ color: "rgb(187, 187, 187)", fontSize: "1rem" }}>
+                Modifier votre catégorie de travail
+              </p>
+            )}
+          </div>
+        ) : null}
       </div>
     </div>
   );

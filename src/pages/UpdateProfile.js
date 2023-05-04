@@ -6,13 +6,13 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
-import "../style/UpdateProfile.css"
+import "../style/UpdateProfile.css";
 
 const initialState = {
   phonenumber: "",
   bio: "",
   tags: [],
-  category: ""
+  category: "",
 };
 
 const UpdateProfile = ({ user }) => {
@@ -81,16 +81,20 @@ const UpdateProfile = ({ user }) => {
           value={form.bio}
           onChange={handleChange}
         ></textarea>
-        <select name="category" value={form.category} onChange={handleChange}>
-          <option value="">Sélectionnez votre catégorie de travail</option>
-          <option value="Plomberie">Plomberie</option>
-          <option value="Électricité">Électricité</option>
-          <option value="Serrurerie">Serrurerie</option>
-          <option value="Chauffage & Climatisation">Chauffage & Climatisation</option>
-          <option value="Gaz">Gaz</option>
-          <option value="Dépannage">Dépannage</option>
-          <option value="Installation">Installation</option>
-        </select>
+        {form.type === "professionnel" ? (
+          <select name="category" value={form.category} onChange={handleChange}>
+            <option value="">Sélectionnez votre catégorie de travail</option>
+            <option value="Plomberie">Plomberie</option>
+            <option value="Électricité">Électricité</option>
+            <option value="Serrurerie">Serrurerie</option>
+            <option value="Chauffage & Climatisation">
+              Chauffage & Climatisation
+            </option>
+            <option value="Gaz">Gaz</option>
+            <option value="Dépannage">Dépannage</option>
+            <option value="Installation">Installation</option>
+          </select>
+        ) : null}
         <button type="submit">Modifier</button>
       </form>
     </div>
