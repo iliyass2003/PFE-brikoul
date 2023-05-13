@@ -56,7 +56,7 @@ function App() {
         <Route path='/' element={<Home/>} user={user}/>
         <Route path='/home' element={<Home/>} user={user}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/detail/:id' element={<Detail user={user}/>}/>
+        <Route path='/detail/:id' element={<Detail user={user} infos={infos}/>}/>
         <Route path='/create' element={user?.uid && infos?.type === "client" ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/update/:id' element={user?.uid ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>
         <Route path='/*' element={<NotFound/>}/>

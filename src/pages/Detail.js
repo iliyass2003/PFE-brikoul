@@ -17,18 +17,18 @@ import {
   LinkedinIcon,
 } from "react-share";
 
-const Detail = ({user}) => {
+const Detail = ({ user, infos }) => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleDelete = async (id) => {
     if (window.confirm("Voulez-vous vraiment supprimer le projet ?")) {
       try {
         await deleteDoc(doc(db, "projects", id));
         toast.success("Projet supprimé avec succès");
-        navigate('/')
+        navigate("/");
       } catch (err) {
         console.log(err);
       }
@@ -50,10 +50,18 @@ const Detail = ({user}) => {
     return <Spinner />;
   }
 
-  const url = window.location.href
+  const url = window.location.href;
 
   return (
     <div className="detail">
+      {infos?.type === "professionnel" ? (
+        <Link to={""}>
+          <div className="postuler">
+            Postuler{" "}
+            <i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </Link>
+      ) : null}
       <div className="project-detail">
         <div className="title">{project?.title}</div>
         <div className="infos">
@@ -87,17 +95,17 @@ const Detail = ({user}) => {
         <LinkedinShareButton url={url} windowWidth={600} windowHeight={600}>
           <LinkedinIcon size={35} round={true} />
         </LinkedinShareButton>
-        {user?.uid === project?.userId  ? (
+        {user?.uid === project?.userId ? (
           <div className="editdelete">
             <Link to={`/update/${id}`}>
-            <i
-              className="fa-solid fa-pen-to-square"
-              style={{
-                color: "#005cfa",
-                cursor: "pointer",
-                fontSize: "1.8rem",
-              }}
-            ></i>
+              <i
+                className="fa-solid fa-pen-to-square"
+                style={{
+                  color: "#005cfa",
+                  cursor: "pointer",
+                  fontSize: "1.8rem",
+                }}
+              ></i>
             </Link>
             <i
               className="fa-solid fa-trash"

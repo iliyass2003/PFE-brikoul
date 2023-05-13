@@ -78,3 +78,20 @@
 .editdelete i:hover{
   transform: scale(1.1);
 }
+
+.detail .postuler{
+  position: fixed;
+  top: 35%;
+  left: 8%;
+  background-color: rgb(0, 110, 255);
+  padding: 15px;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.detail .postuler:hover{
+  background-color: rgb(0, 90, 207);
+}
