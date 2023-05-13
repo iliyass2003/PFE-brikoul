@@ -18,13 +18,17 @@ const Login = () => {
     setState({...state, [e.target.name]: e.target.value})
   }
   const handleAuth = async (e) => {
-    e.preventDefault()
-    if(email && password){
-      const {user} = await signInWithEmailAndPassword(auth, email, password)
-    }else{
-      return toast.error("Tous les champs sont obligatoires à remplir")
+    e.preventDefault();
+    if (email && password) {
+      try {
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        navigate("/");
+      } catch (error) {
+        toast.error("Email ou mot de passe incorrect.");
+      }
+    } else {
+      toast.error("Tous les champs sont obligatoires à remplir.");
     }
-    navigate("/");
   }
   return (
     <div className='login'>
