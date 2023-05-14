@@ -34,18 +34,27 @@
   margin-bottom: 10px;
 }
 
-.dailyprojects .author{
+.dailyprojects .authorville{
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid gray;
-  text-align: left;
+  padding-bottom: 10px;
+}
+
+.dailyprojects .author{
   color: gray;
   font-weight: bold;
-  padding-bottom: 20px;
+}
+
+.dailyprojects .ville{
+  font-weight: bold;
 }
 
 .dailyprojects .description{
   text-align: left;
   margin-bottom: 30px;
   height: 60px;
+  margin-top: 10px;
 }
 
 .dailyprojects button{

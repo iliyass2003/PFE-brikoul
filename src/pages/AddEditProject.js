@@ -22,7 +22,8 @@ import { toast } from "react-toastify";
 const initialState = {
   title: "",
   tags: [],
-  category: ""
+  category: "",
+  ville: ""
 };
 
 const categoryOption = [
@@ -33,6 +34,28 @@ const categoryOption = [
   "Gaz",
   "Dépannage",
   "Installation"
+];
+
+const villeOption = [
+  "Agadir",
+  "Al Hoceima",
+  "Azrou",
+  "Ben Guerir",
+  "Beni Mellal",
+  "Berrechid",
+  "Casablanca",
+  "El Jadida",
+  "Errachidia",
+  "Essaouira",
+  "Fez",
+  "Kenitra",
+  "Khouribga",
+  "Marrakesh",
+  "Mohammedia",
+  "Ouarzazate",
+  "Oujda",
+  "Oujda",
+  "Tangier",
 ];
 
 const AddEditBlog = ({ user }) => {
@@ -46,7 +69,7 @@ const AddEditBlog = ({ user }) => {
 
   const navigate = useNavigate();
 
-  const { title, tags, category } = form;
+  const { title, tags, category, ville } = form;
 
   useEffect(() => {
     const uploadFile = () => {
@@ -100,9 +123,15 @@ const AddEditBlog = ({ user }) => {
     setForm({ ...form, category: e.target.value });
   };
 
+  const onVilleChange = (e) => {
+    setForm({ ...form, ville: e.target.value });
+  };
+
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (category && tags && title && text && file) {
+    if (category && tags && title && text && file && ville) {
       if (!id) {
         try {
           await addDoc(collection(db, "projects"), {
@@ -167,6 +196,17 @@ const AddEditBlog = ({ user }) => {
                     ))}
                   </select>
 
+                  <select
+                    value={ville}
+                    onChange={onVilleChange}
+                  >
+                    <option value={""}>Veuillez sélectionner ville</option>
+                    {villeOption.map((option, index) => (
+                      <option value={option || ""} key={index}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
 
                   <div className="editor">
                     <CKEditor

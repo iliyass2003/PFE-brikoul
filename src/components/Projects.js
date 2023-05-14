@@ -11,6 +11,7 @@ const Projects = ({
   imgUrl,
   userId,
   author,
+  ville,
   timestamp,
   user,
   handleDelete,
@@ -35,7 +36,10 @@ const Projects = ({
             {timestamp.toDate().toDateString()}
           </span>
         </div>
-        <span className="author">{author}</span> &nbsp;
+        <div className="authorville">
+          <span className="author">{author}</span> &nbsp;
+          <span className="ville">{ville}</span>
+        </div>
         <div
           className="description"
           dangerouslySetInnerHTML={{ __html: stripHTML(excerpt(text, 100)) }}

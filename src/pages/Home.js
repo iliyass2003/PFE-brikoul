@@ -16,6 +16,28 @@ const Home = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState("");
+  const [ville, setVille] = useState("");
+  const villeOption = [
+    "Agadir",
+    "Al Hoceima",
+    "Azrou",
+    "Ben Guerir",
+    "Beni Mellal",
+    "Berrechid",
+    "Casablanca",
+    "El Jadida",
+    "Errachidia",
+    "Essaouira",
+    "Fez",
+    "Kenitra",
+    "Khouribga",
+    "Marrakesh",
+    "Mohammedia",
+    "Ouarzazate",
+    "Oujda",
+    "Oujda",
+    "Tangier",
+  ];
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -39,11 +61,11 @@ const Home = ({ user }) => {
 
   const filteredBlogPosts = blogs.filter(
     (blog) =>
-      blog.title.toLowerCase().includes(search.toLowerCase()) ||
-      // blog.tags.includes(search.toLowerCase())
+      (blog.title.toLowerCase().includes(search.toLowerCase()) ||
       blog.tags
         .map((tag) => tag.toLowerCase())
-        .includes(search.toLocaleLowerCase())
+        .includes(search.toLocaleLowerCase())) &&
+      blog.ville.includes(ville)
   );
 
   function stripHTML(myString) {
@@ -71,6 +93,10 @@ const Home = ({ user }) => {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+  };
+
+  const onVilleChange = (e) => {
+    setVille(e.target.value);
   };
 
   return (
@@ -133,12 +159,22 @@ const Home = ({ user }) => {
             </div>
           </div>
         </div>
-        <input
-          type="text"
-          placeholder="Chercher par titre ou tags..."
-          onChange={handleChange}
-          className="search"
-        />
+        <div className="searchcomponent">
+          <input
+            type="text"
+            placeholder="Chercher par titre ou tags..."
+            onChange={handleChange}
+            className="search"
+          />
+          <select value={ville} onChange={onVilleChange}>
+            <option value={""}>Toutes les villes</option>
+            {villeOption.map((option, index) => (
+              <option value={option || ""} key={index}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="dailyprojects">
           {filteredBlogPosts?.map((blog) => (
             <Projects
@@ -150,7 +186,7 @@ const Home = ({ user }) => {
           ))}
         </div>
       </div>
-      <UpToTopButton/>
+      <UpToTopButton />
     </>
   );
 };
