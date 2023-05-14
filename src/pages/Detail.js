@@ -57,7 +57,7 @@ const Detail = ({ user, infos }) => {
       {infos?.type === "professionnel" ? (
         <Link to={""}>
           <div className="postuler">
-            Postuler{" "}
+            Contacter{" "}
             <i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i>
           </div>
         </Link>
