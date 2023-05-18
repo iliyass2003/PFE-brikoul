@@ -37,7 +37,7 @@ const Header = ({ user, handleLogout, infos }) => {
               </Link>
             )}
             <li onClick={handleLogout} style={{ cursor: "pointer" }}>
-              Logout
+              Déconnexion
             </li>
           </>
         ) : (
