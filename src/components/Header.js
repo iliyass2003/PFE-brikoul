@@ -13,7 +13,7 @@ const Header = ({ user, handleLogout, infos }) => {
       </Link>
       <ul>
         <Link to={"/"} style={{ textDecoration: "none" }}>
-          <li>Acceuil</li>
+          <li>Accueil</li>
         </Link>
         {infos?.type === "client" ? (
           <Link to={"/create"} style={{ textDecoration: "none" }}>
