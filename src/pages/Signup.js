@@ -41,7 +41,11 @@ const Signup = () => {
 
       await setDoc(doc(db, "users", user.uid), {
         type: type,
-        tags: tags
+        tags: tags,
+        username: `${firstName} ${lastName}`,
+        uid: user.uid,
+        email,
+        photoURL: "https://img.icons8.com/?size=512&id=7Ffvtg1xmgaV&format=png"
       });
 
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });

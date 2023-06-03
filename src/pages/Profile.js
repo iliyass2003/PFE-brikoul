@@ -5,6 +5,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import { db } from "../firebase";
+import { updateDoc } from "firebase/firestore";
 import {
   doc,
   getDoc,
@@ -50,6 +51,9 @@ const Profile = ({ user }) => {
     const snapchot = await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
     updateProfile(user, { photoURL });
+    await updateDoc(doc(db, "users", user.uid), {
+      photoURL
+    });
     setLoading(false);
     toast.success("Changement d'image réussi");
     window.location.reload();
