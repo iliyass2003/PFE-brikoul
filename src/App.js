@@ -18,10 +18,14 @@ import UpdateProfile from './pages/UpdateProfile';
 import { db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import Footer from './components/Footer';
-
+import ChatHome from './pages/ChatHome';
+import './style.scss'
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
 
 
 function App() {
+  const {currentUser} = useContext(AuthContext)
   const [user, setUser] = useState()
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -64,6 +68,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/profile' element={user?.uid ? <Profile user={user}/> : <Navigate to="/"/>}/>
         <Route path='/profile/update' element={user?.uid ? <UpdateProfile user={user}/> : <Navigate to="/"/>}/>
+        <Route path='/chathome' element={ currentUser ? <ChatHome/> : <Login/>}/>
       </Routes>
       <Footer/>
     </div>

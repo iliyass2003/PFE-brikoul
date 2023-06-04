@@ -24,6 +24,11 @@ const Header = ({ user, handleLogout, infos }) => {
           <li>Contact</li>
         </Link>
         {userId ? (
+          <Link to={"/chathome"} style={{ textDecoration: "none" }}>
+            <li>Chat</li>
+          </Link>
+        ) : null}
+        {userId ? (
           <>
             {user?.photoURL ? (
               <Link to={"/profile"}>

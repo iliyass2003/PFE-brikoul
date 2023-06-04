@@ -48,6 +48,8 @@ const Signup = () => {
         photoURL: "https://img.icons8.com/?size=512&id=7Ffvtg1xmgaV&format=png"
       });
 
+      await setDoc(doc(db, "userChats", user.uid), {})
+
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
     } else {
       return toast.error("Tous les champs sont obligatoires à remplir");
