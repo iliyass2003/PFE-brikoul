@@ -30,7 +30,7 @@ const categoryOption = [
   "Plomberie",
   "Électricité",
   "Serrurerie",
-  "Chauffage & Climatisation",
+  "Chauffage",
   "Gaz",
   "Dépannage",
   "Installation"
