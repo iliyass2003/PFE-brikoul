@@ -22,6 +22,7 @@ import ChatHome from './pages/ChatHome';
 import './style.scss'
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import ProfilePro from './pages/ProfilePro';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
         <Route path='/profile' element={user?.uid ? <Profile user={user}/> : <Navigate to="/"/>}/>
         <Route path='/profile/update' element={user?.uid ? <UpdateProfile user={user}/> : <Navigate to="/"/>}/>
         <Route path='/chathome' element={ currentUser ? <ChatHome/> : <Login/>}/>
+        <Route path='/profile/:id' element={ <ProfilePro/> }/>
       </Routes>
       <Footer/>
     </div>

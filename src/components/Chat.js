@@ -5,6 +5,7 @@ import More from "../images/more.png";
 import Messages from "./Messages";
 import Input from "./Input";
 import { ChatContext } from "../context/ChatContext";
+import { Link } from "react-router-dom";
 
 const Chat = () => {
   const { data } = useContext(ChatContext);
@@ -12,7 +13,9 @@ const Chat = () => {
   return (
     <div className="chat">
       <div className="chatInfo">
+        <Link to={`/profile/${data.user?.uid}`}>
         <span>{data.user?.displayName}</span>
+        </Link>
         <div className="chatIcons">
           <img src={Cam} alt="" />
           <img src={Add} alt="" />
