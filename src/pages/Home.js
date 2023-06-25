@@ -62,9 +62,9 @@ const Home = ({ user }) => {
   const filteredBlogPosts = blogs.filter(
     (blog) =>
       (blog.title.toLowerCase().includes(search.toLowerCase()) ||
-      blog.tags
-        .map((tag) => tag.toLowerCase())
-        .includes(search.toLocaleLowerCase())) &&
+        blog.tags
+          .map((tag) => tag.toLowerCase())
+          .includes(search.toLocaleLowerCase())) &&
       blog.ville.includes(ville)
   );
 
@@ -113,14 +113,16 @@ const Home = ({ user }) => {
               nous mettons chaque jour notre énergie au service d’un habitat
               durable.
             </p>
-            <button>
-              <Link
-                to={"/create"}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Commencer
-              </Link>
-            </button>
+            {user?.uid ? null : (
+              <button>
+                <Link
+                  to={"/signup"}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Commencer
+                </Link>
+              </button>
+            )}
           </div>
           <img src={require("../images/pexels-ketut-subiyanto-4246109.jpg")} />
         </div>

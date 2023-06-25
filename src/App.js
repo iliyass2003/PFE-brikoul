@@ -58,8 +58,8 @@ function App() {
       <Header user={user} infos={infos}  handleLogout={handleLogout} />
       <ToastContainer position='top-center'/>
       <Routes>
-        <Route path='/' element={<Home/>} user={user}/>
-        <Route path='/home' element={<Home/>} user={user}/>
+        <Route path='/' element={<Home user={user} />}/>
+        <Route path='/home' element={<Home user={user} />}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/detail/:id' element={<Detail user={user} infos={infos}/>}/>
         <Route path='/create' element={user?.uid && infos?.type === "client" ? <AddEditProject user={user}/> : <Navigate to="/"/>}/>

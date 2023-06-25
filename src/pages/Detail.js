@@ -54,14 +54,6 @@ const Detail = ({ user, infos }) => {
 
   return (
     <div className="detail">
-      {infos?.type === "professionnel" ? (
-        <Link to={""}>
-          <div className="postuler">
-            Contacter{" "}
-            <i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </Link>
-      ) : null}
       <div className="project-detail">
         <div className="title">{project?.title}</div>
         <div className="infos">
